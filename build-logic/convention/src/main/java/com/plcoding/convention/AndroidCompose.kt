@@ -4,7 +4,6 @@ import com.android.build.api.dsl.CommonExtension
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 
-//TODO will this function be reused?
 internal fun Project.configureAndroidCompose(
     commonExtension: CommonExtension<*, *, *, *, *>
 ) {
