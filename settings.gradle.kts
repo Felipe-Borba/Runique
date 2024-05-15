@@ -14,6 +14,8 @@ dependencyResolutionManagement {
     }
 }
 
+//gradle.startParameter.excludedTaskNames.addAll(listOf(":build-logic:convention:testClasses")) // fix iguana android studio weird error on build project
+
 rootProject.name = "Runique"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":app")
