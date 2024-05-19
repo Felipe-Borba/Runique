@@ -1,3 +1,4 @@
+@file:Suppress("OPT_IN_USAGE_FUTURE_ERROR")
 @file:OptIn(ExperimentalFoundationApi::class)
 
 package com.plcoding.auth.presentation.login
