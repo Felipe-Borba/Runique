@@ -50,6 +50,7 @@ import com.plcoding.core.domain.run.Run
 import com.plcoding.core.presentation.designsystem.CalendarIcon
 import com.plcoding.core.presentation.designsystem.RunOutlinedIcon
 import com.plcoding.core.presentation.designsystem.RuniqueTheme
+import com.plcoding.run.domain.RunData
 import com.plcoding.run.presentation.R
 import com.plcoding.run.presentation.run_overview.mapper.toRunUi
 import com.plcoding.run.presentation.run_overview.model.RunDataUi
@@ -248,6 +249,14 @@ private fun DataGrid(
             name = stringResource(id = R.string.total_elevation),
             value = run.totalElevation
         ),
+        RunDataUi(
+            name = stringResource(id = R.string.avg_heart_rate),
+            value = run.avgHeartRate
+        ),
+        RunDataUi(
+            name = stringResource(id = R.string.max_heart_rate),
+            value = run.maxHeartRate
+        ),
     )
     var maxWidth by remember {
         mutableIntStateOf(0)
@@ -305,7 +314,9 @@ private fun RunListItemPreview() {
                 location = Location(0.0, 0.0),
                 maxSpeedKmh = 15.6234,
                 totalElevationMeters = 123,
-                mapPictureUrl = null
+                mapPictureUrl = null,
+                avgHeartRate = 120,
+                maxHeartRate = 150
             ).toRunUi(),
             onDeleteClick = { /*TODO*/ }
         )
