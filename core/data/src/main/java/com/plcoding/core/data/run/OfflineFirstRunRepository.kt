@@ -25,8 +25,6 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-// Here localRunDataSource is the single source of truth,
-// this approach is less error prone because we first fetch from remote sync with local and get from local to show on screen
 class OfflineFirstRunRepository(
     private val localRunDataSource: LocalRunDataSource,
     private val remoteRunDataSource: RemoteRunDataSource,
@@ -42,7 +40,7 @@ class OfflineFirstRunRepository(
     }
 
     override suspend fun fetchRuns(): EmptyResult<DataError> {
-        return when (val result = remoteRunDataSource.getRuns()) {
+        return when(val result = remoteRunDataSource.getRuns()) {
             is Result.Error -> result.asEmptyDataResult()
             is Result.Success -> {
                 applicationScope.async {
@@ -54,7 +52,7 @@ class OfflineFirstRunRepository(
 
     override suspend fun upsertRun(run: Run, mapPicture: ByteArray): EmptyResult<DataError> {
         val localResult = localRunDataSource.upsertRun(run)
-        if (localResult !is Result.Success) {
+        if(localResult !is Result.Success) {
             return localResult.asEmptyDataResult()
         }
 
@@ -64,7 +62,7 @@ class OfflineFirstRunRepository(
             mapPicture = mapPicture
         )
 
-        return when (remoteResult) {
+        return when(remoteResult) {
             is Result.Error -> {
                 applicationScope.launch {
                     syncRunScheduler.scheduleSync(
@@ -76,7 +74,6 @@ class OfflineFirstRunRepository(
                 }.join()
                 Result.Success(Unit)
             }
-
             is Result.Success -> {
                 applicationScope.async {
                     localRunDataSource.upsertRun(remoteResult.data).asEmptyDataResult()
@@ -92,7 +89,7 @@ class OfflineFirstRunRepository(
         // and then deleted in offline-mode as well. In that case,
         // we don't need to sync anything.
         val isPendingSync = runPendingSyncDao.getRunPendingSyncEntity(id) != null
-        if (isPendingSync) {
+        if(isPendingSync) {
             runPendingSyncDao.deleteRunPendingSyncEntity(id)
             return
         }
@@ -126,7 +123,7 @@ class OfflineFirstRunRepository(
                 .map {
                     launch {
                         val run = it.run.toRun()
-                        when (remoteRunDataSource.postRun(run, it.mapPictureBytes)) {
+                        when(remoteRunDataSource.postRun(run, it.mapPictureBytes)) {
                             is Result.Error -> Unit
                             is Result.Success -> {
                                 applicationScope.launch {
@@ -140,7 +137,7 @@ class OfflineFirstRunRepository(
                 .await()
                 .map {
                     launch {
-                        when (remoteRunDataSource.deleteRun(it.runId)) {
+                        when(remoteRunDataSource.deleteRun(it.runId)) {
                             is Result.Error -> Unit
                             is Result.Success -> {
                                 applicationScope.launch {

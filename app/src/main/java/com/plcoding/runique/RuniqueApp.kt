@@ -21,7 +21,7 @@ import org.koin.androidx.workmanager.koin.workManagerFactory
 import org.koin.core.context.startKoin
 import timber.log.Timber
 
-class RuniqueApp : Application() {
+class RuniqueApp: Application() {
 
     val applicationScope = CoroutineScope(SupervisorJob())
 

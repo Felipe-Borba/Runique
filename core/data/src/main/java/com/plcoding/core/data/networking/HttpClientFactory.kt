@@ -65,7 +65,7 @@ class HttpClientFactory(
                             )
                         )
 
-                        if (response is Result.Success) {
+                        if(response is Result.Success) {
                             val newAuthInfo = AuthInfo(
                                 accessToken = response.data.accessToken,
                                 refreshToken = info?.refreshToken ?: "",

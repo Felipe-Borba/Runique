@@ -83,7 +83,6 @@ fun ActiveRunScreenRoot(
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun ActiveRunScreen(
     state: ActiveRunState,
@@ -142,13 +141,13 @@ private fun ActiveRunScreen(
     }
 
     LaunchedEffect(key1 = state.isRunFinished) {
-        if(state.isRunFinished) {
+        if (state.isRunFinished) {
             onServiceToggle(false)
         }
     }
 
     LaunchedEffect(key1 = state.shouldTrack) {
-        if(context.hasLocationPermission() && state.shouldTrack && !ActiveRunService.isServiceActive) {
+        if (context.hasLocationPermission() && state.shouldTrack && !ActiveRunService.isServiceActive) {
             onServiceToggle(true)
         }
     }
@@ -271,7 +270,7 @@ private fun ActiveRunScreen(
                     onClick = {
                         onAction(ActiveRunAction.DismissRationaleDialog)
                         permissionLauncher.requestRuniquePermissions(context)
-                    }
+                    },
                 )
             }
         )

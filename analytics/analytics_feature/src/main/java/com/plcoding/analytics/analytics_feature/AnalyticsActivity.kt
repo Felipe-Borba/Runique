@@ -13,7 +13,7 @@ import com.plcoding.analytics.presentation.di.analyticsPresentationModule
 import com.plcoding.core.presentation.designsystem.RuniqueTheme
 import org.koin.core.context.loadKoinModules
 
-class AnalyticsActivity: ComponentActivity() {
+class AnalyticsActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

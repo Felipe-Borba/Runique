@@ -42,6 +42,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.plcoding.core.presentation.designsystem.CheckIcon
 import com.plcoding.core.presentation.designsystem.EmailIcon
+import com.plcoding.core.presentation.designsystem.RuniqueGray
 import com.plcoding.core.presentation.designsystem.RuniqueTheme
 
 @Composable
@@ -68,19 +69,19 @@ fun RuniqueTextField(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            if (title != null) {
+            if(title != null) {
                 Text(
                     text = title,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
-            if (error != null) {
+            if(error != null) {
                 Text(
                     text = error,
                     color = MaterialTheme.colorScheme.error,
                     fontSize = 12.sp
                 )
-            } else if (additionalInfo != null) {
+            } else if(additionalInfo != null) {
                 Text(
                     text = additionalInfo,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
@@ -129,7 +130,7 @@ fun RuniqueTextField(
                         .fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
-                    if (startIcon != null) {
+                    if(startIcon != null) {
                         Icon(
                             imageVector = startIcon,
                             contentDescription = null,
@@ -141,7 +142,7 @@ fun RuniqueTextField(
                         modifier = Modifier
                             .weight(1f)
                     ) {
-                        if (state.text.isEmpty() && !isFocused) {
+                        if(state.text.isEmpty() && !isFocused) {
                             Text(
                                 text = hint,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(
@@ -149,11 +150,10 @@ fun RuniqueTextField(
                                 ),
                                 modifier = Modifier.fillMaxWidth()
                             )
-                        } else {
-                            innerBox()
                         }
+                        innerBox()
                     }
-                    if (endIcon != null) {
+                    if(endIcon != null) {
                         Spacer(modifier = Modifier.width(16.dp))
                         Icon(
                             imageVector = endIcon,

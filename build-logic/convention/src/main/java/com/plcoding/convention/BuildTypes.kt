@@ -19,7 +19,7 @@ internal fun Project.configureBuildTypes(
         }
 
         val apiKey = gradleLocalProperties(rootDir).getProperty("API_KEY")
-        when (extensionType) {// TODO is this function breaking OCP?
+        when(extensionType) {
             ExtensionType.APPLICATION -> {
                 extensions.configure<ApplicationExtension> {
                     buildTypes {
@@ -32,7 +32,6 @@ internal fun Project.configureBuildTypes(
                     }
                 }
             }
-
             ExtensionType.LIBRARY -> {
                 extensions.configure<LibraryExtension> {
                     buildTypes {
@@ -45,7 +44,6 @@ internal fun Project.configureBuildTypes(
                     }
                 }
             }
-
             ExtensionType.DYNAMIC_FEATURE -> {
                 extensions.configure<DynamicFeatureExtension> {
                     buildTypes {

@@ -19,20 +19,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.plcoding.core.presentation.designsystem.RuniqueBlack
 import com.plcoding.core.presentation.designsystem.RuniqueGray
-import com.plcoding.core.presentation.designsystem.RuniqueTheme
-
-
-@Preview
-@Composable
-private fun RuniqueActionButtonPreview() {
-    RuniqueTheme {
-        RuniqueActionButton(text = "buttom", isLoading = false, onClick = {})
-    }
-}
 
 @Composable
 fun RuniqueActionButton(
@@ -71,13 +60,12 @@ fun RuniqueActionButton(
             Text(
                 text = text,
                 modifier = Modifier
-                    .alpha(if (isLoading) 0f else 1f),
+                    .alpha(if(isLoading) 0f else 1f),
                 fontWeight = FontWeight.Medium
             )
         }
     }
 }
-
 
 @Composable
 fun RuniqueOutlinedActionButton(
@@ -117,7 +105,7 @@ fun RuniqueOutlinedActionButton(
             Text(
                 text = text,
                 modifier = Modifier
-                    .alpha(if (isLoading) 0f else 1f),
+                    .alpha(if(isLoading) 0f else 1f),
                 fontWeight = FontWeight.Medium
             )
         }
