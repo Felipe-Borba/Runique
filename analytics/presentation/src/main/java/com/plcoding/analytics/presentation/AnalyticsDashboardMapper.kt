@@ -4,7 +4,6 @@ import com.plcoding.analytics.domain.AnalyticsValues
 import com.plcoding.core.presentation.ui.formatted
 import com.plcoding.core.presentation.ui.toFormattedKm
 import com.plcoding.core.presentation.ui.toFormattedKmh
-import com.plcoding.core.presentation.ui.toFormattedMeters
 import kotlin.time.Duration
 import kotlin.time.Duration.Companion.seconds
 import kotlin.time.DurationUnit
