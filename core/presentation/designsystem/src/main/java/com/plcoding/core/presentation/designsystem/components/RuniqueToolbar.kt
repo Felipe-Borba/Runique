@@ -24,7 +24,6 @@ import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -78,7 +77,7 @@ fun RuniqueToolbar(
             containerColor = Color.Transparent
         ),
         navigationIcon = {
-            if(showBackButton) {
+            if (showBackButton) {
                 IconButton(onClick = onBackClick) {
                     Icon(
                         imageVector = ArrowLeftIcon,
@@ -89,7 +88,7 @@ fun RuniqueToolbar(
             }
         },
         actions = {
-            if(menuItems.isNotEmpty()) {
+            if (menuItems.isNotEmpty()) {
                 Box {
                     DropdownMenu(
                         expanded = isDropDownOpen,
