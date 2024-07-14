@@ -3,11 +3,9 @@ package com.plcoding.auth.domain
 import assertk.assertThat
 import assertk.assertions.isEqualTo
 import assertk.assertions.isTrue
-import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.params.ParameterizedTest
-import org.junit.jupiter.params.provider.CsvFileSource
 import org.junit.jupiter.params.provider.CsvSource
 
 class UserDataValidatorTest {
@@ -16,7 +14,7 @@ class UserDataValidatorTest {
     @BeforeEach
     fun setUp() {
         userDataValidator = UserDataValidator(
-            patternValidator = object :PatternValidator { // this is called test double
+            patternValidator = object : PatternValidator { // this is called test double
                 override fun matches(value: String): Boolean {
                     return true
                 }
@@ -45,7 +43,7 @@ class UserDataValidatorTest {
         "Te-15, false",
         "TEST12345, false",
     )
-    fun testValidatePassword(password:String, expectedValue: Boolean) {
+    fun testValidatePassword(password: String, expectedValue: Boolean) {
         val state = userDataValidator.validatePassword(password)
 
         assertThat(state.isValidPassword).isEqualTo(expectedValue)
