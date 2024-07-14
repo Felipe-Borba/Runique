@@ -3,6 +3,7 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.tasks.testing.Test
 import org.gradle.kotlin.dsl.dependencies
+import org.gradle.kotlin.dsl.project
 import org.gradle.kotlin.dsl.withType
 
 class JvmJUnit5ConventionPlugin: Plugin<Project> {
@@ -19,6 +20,9 @@ class JvmJUnit5ConventionPlugin: Plugin<Project> {
 
                 "testImplementation"(libs.findLibrary("assertk").get())
                 "testImplementation"(libs.findLibrary("turbine").get())
+                "testImplementation"(libs.findLibrary("coroutines.test").get())
+
+                "testImplementation"(project(":core:test"))
             }
         }
     }
