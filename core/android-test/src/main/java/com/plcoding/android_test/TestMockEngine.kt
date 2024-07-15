@@ -2,6 +2,7 @@
 
 package com.plcoding.android_test
 
+import com.plcoding.auth.data.LoginResponse
 import io.ktor.client.engine.HttpClientEngine
 import io.ktor.client.engine.HttpClientEngineConfig
 import io.ktor.client.engine.mock.MockEngine
@@ -13,10 +14,17 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import kotlin.coroutines.CoroutineContext
 
+val loginResponseStub = LoginResponse(
+    accessToken = "test-access-token",
+    refreshToken = "test-refresh-token",
+    accessTokenExpirationTimestamp = System.currentTimeMillis(),
+    userId = "test-user-id"
+)
+
 class TestMockEngine(
     override val dispatcher: CoroutineDispatcher,
     private val mockEngineConfig: MockEngineConfig
-): HttpClientEngine {
+) : HttpClientEngine {
 
     val mockEngine = MockEngine(mockEngineConfig)
 
